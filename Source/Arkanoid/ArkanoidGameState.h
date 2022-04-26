@@ -3,7 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Net/UnrealNetwork.h"
 #include "GameFramework/GameStateBase.h"
 #include "ArkanoidGameState.generated.h"
 
@@ -16,13 +15,9 @@ class ARKANOID_API AArkanoidGameState : public AGameStateBase
 	GENERATED_BODY()
 	
 public:
-	UPROPERTY(Replicated)
 	int remainingBalls;
 
-	UPROPERTY(Replicated)
 	int numberOfBricks;
-
-	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const;
 
 	UFUNCTION(BlueprintCallable, Category = "GameStats")
 	int GetRemainingBalls();
@@ -42,6 +37,6 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "GameStats")
 	int GetBricks();
 
-	UFUNCTION(BlueprintImplementableEvent, Category = "GameStats")
+	UFUNCTION(BlueprintImplementableEvent)
 	void Restart();
 };

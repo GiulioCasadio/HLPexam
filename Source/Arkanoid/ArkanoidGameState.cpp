@@ -19,10 +19,10 @@ void AArkanoidGameState::DecreaseBalls()
 	remainingBalls--;
 
 	// Works only in single player
-	/*if (remainingBalls <= 0) {
+	if (remainingBalls <= 0) {
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("You lose"));
 		Restart();
-	}*/
+	}
 }
 
 void AArkanoidGameState::SetBricks(int bricks)
@@ -38,11 +38,4 @@ void AArkanoidGameState::DecreaseBricks()
 int AArkanoidGameState::GetBricks()
 {
 	return numberOfBricks;
-}
-
-void AArkanoidGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
-{
-	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-
-	DOREPLIFETIME(AArkanoidGameState, remainingBalls);
 }

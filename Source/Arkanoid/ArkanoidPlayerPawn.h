@@ -44,11 +44,4 @@ public:
 	virtual void ArkanoidMovement(float AxisValue);
 
 	void Launch();
-
-private:
-	UFUNCTION(Server, Reliable, Category = "ServerUpdateMovement")
-	void Server_Launch();
-
-	UFUNCTION(Server, Reliable, Category = "ServerUpdateMovement")
-	void Server_Movement(FVector newPosition);
 };

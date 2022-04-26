@@ -45,23 +45,12 @@ void AArkanoidPlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInput
 void AArkanoidPlayerPawn::ArkanoidMovement(float AxisValue)
 {
 	AddMovementInput(FVector(AxisValue, 0.0f, 0.0f), 1.0f, false);
-	Server_Movement(GetActorLocation());
+	SetActorLocation(GetActorLocation());
 }
 
 void AArkanoidPlayerPawn::Launch()
 {
-	//ballRef->Destroy();
-	Server_Launch();
-}
-
-void AArkanoidPlayerPawn::Server_Launch_Implementation()
-{
 	if (ballRef) {
 		ballRef->Launch();
 	}
-}
-
-void AArkanoidPlayerPawn::Server_Movement_Implementation(FVector newPosition)
-{
-	SetActorLocation(newPosition);
 }
