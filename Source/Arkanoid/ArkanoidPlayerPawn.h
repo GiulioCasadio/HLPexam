@@ -9,6 +9,7 @@
 #include "ArkanoidPlayerPawn.generated.h"
 
 class UFloatingPawnMovement;
+class UPaddleStats;
 
 UCLASS()
 class ARKANOID_API AArkanoidPlayerPawn : public APawn
@@ -22,20 +23,18 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	ABall* ballRef;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	//bool isAlive = false;
-
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadonly)
-		UStaticMeshComponent* Pitcher;
+	UStaticMeshComponent* Pitcher;
 	UPROPERTY(VisibleAnywhere, BlueprintReadonly)
-		UFloatingPawnMovement* FloatingMovement;
+	UFloatingPawnMovement* FloatingMovement;
+
+	UPROPERTY(Category = Pawn, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UPaddleStats* StatsComponent;
 
 public:	
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input

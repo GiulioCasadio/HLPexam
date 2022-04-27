@@ -6,6 +6,8 @@
 #include "GameFramework/Pawn.h"
 
 #include "Components/StaticMeshComponent.h"
+#include "PaddleStats.h"
+
 
 // Sets default values
 AArkanoidPlayerPawn::AArkanoidPlayerPawn()
@@ -22,6 +24,7 @@ AArkanoidPlayerPawn::AArkanoidPlayerPawn()
 	Pitcher->SetCollisionProfileName(TEXT("PhysicsActor"));
 	FloatingMovement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Floating Pawn Movement"));
 
+	StatsComponent = CreateDefaultSubobject<UPaddleStats>(TEXT("Stats"));
 }
 
 // Called when the game starts or when spawned
