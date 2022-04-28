@@ -10,6 +10,7 @@
 
 class UFloatingPawnMovement;
 class UPaddleStats;
+class UCollectableInventory;
 
 UCLASS()
 class ARKANOID_API AArkanoidPlayerPawn : public APawn
@@ -34,13 +35,15 @@ protected:
 	UPROPERTY(Category = Pawn, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	UPaddleStats* StatsComponent;
 
+	UPROPERTY(Category = Pawn, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UCollectableInventory* InventoryComponent;
+
 public:	
 	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	virtual void ArkanoidMovement(float AxisValue);
 
 	void Launch();
+
+	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
 };

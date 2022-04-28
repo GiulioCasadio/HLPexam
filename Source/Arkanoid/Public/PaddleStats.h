@@ -20,5 +20,5 @@ public:
 protected:
 	
 	UPROPERTY(EditAnywhere, Category = "Stats", meta = (ClampMin = "0.0", ClampMax = "1.0", UIMin = "0.0", UIMAX = "1.0"))
-	float paddleSpeed = 0.5f;
+	float Speed = 0.5f;
 };

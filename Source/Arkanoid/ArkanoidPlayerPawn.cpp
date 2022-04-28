@@ -7,7 +7,8 @@
 
 #include "Components/StaticMeshComponent.h"
 #include "PaddleStats.h"
-
+#include "CollectableInventory.h"
+#include "Collectable.h"
 
 // Sets default values
 AArkanoidPlayerPawn::AArkanoidPlayerPawn()
@@ -25,6 +26,7 @@ AArkanoidPlayerPawn::AArkanoidPlayerPawn()
 	FloatingMovement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Floating Pawn Movement"));
 
 	StatsComponent = CreateDefaultSubobject<UPaddleStats>(TEXT("Stats"));
+	InventoryComponent = CreateDefaultSubobject<UCollectableInventory>(TEXT("Inventory"));
 }
 
 // Called when the game starts or when spawned
@@ -39,12 +41,6 @@ void AArkanoidPlayerPawn::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
-// Called to bind functionality to input
-void AArkanoidPlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-}
-
 void AArkanoidPlayerPawn::ArkanoidMovement(float AxisValue)
 {
 	AddMovementInput(FVector(AxisValue, 0.0f, 0.0f), 1.0f, false);
@@ -55,5 +51,23 @@ void AArkanoidPlayerPawn::Launch()
 {
 	if (ballRef) {
 		ballRef->Launch();
+	}
+}
+
+void AArkanoidPlayerPawn::NotifyActorBeginOverlap(AActor* OtherActor)
+{
+	Super::NotifyActorBeginOverlap(OtherActor);
+
+	if (OtherActor == nullptr) {
+		return;
+	}
+
+	bool bIsAnItem = OtherActor->IsA<ACollectable>();
+
+	if (bIsAnItem) {
+		ACollectable* Item = Cast<ACollectable>(OtherActor);
+		InventoryComponent->AddItem(Item);
+
+		Item->Destroy();
 	}
 }
