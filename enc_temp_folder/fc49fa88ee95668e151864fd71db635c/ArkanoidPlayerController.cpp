@@ -9,6 +9,11 @@
 
 #include "ArkanoidPlayerPawn.h"
 
+AArkanoidPlayerController::AArkanoidPlayerController()
+{
+	PrimaryActorTick.bCanEverTick = false;
+}
+
 void AArkanoidPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();

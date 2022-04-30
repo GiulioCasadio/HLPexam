@@ -18,7 +18,6 @@ class ARKANOID_API AArkanoidPlayerPawn : public APawn
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this pawn's properties
 	AArkanoidPlayerPawn();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -27,8 +26,9 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadonly)
+	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* Pitcher;
+	
 	UPROPERTY(VisibleAnywhere, BlueprintReadonly)
 	UFloatingPawnMovement* FloatingMovement;
 
@@ -37,6 +37,8 @@ protected:
 
 	UPROPERTY(Category = Pawn, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	UCollectableInventory* InventoryComponent;
+
+	float PaddleScale = 0.f;
 
 public:	
 	virtual void Tick(float DeltaTime) override;

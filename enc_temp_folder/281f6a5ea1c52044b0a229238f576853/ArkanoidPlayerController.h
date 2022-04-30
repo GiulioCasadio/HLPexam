@@ -16,6 +16,7 @@ class ARKANOID_API AArkanoidPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
+	AArkanoidPlayerController();
 	virtual void SetupInputComponent() override;
 
 protected:
