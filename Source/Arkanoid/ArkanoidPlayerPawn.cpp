@@ -16,26 +16,16 @@ AArkanoidPlayerPawn::AArkanoidPlayerPawn()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	
+	Pitcher = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Pitcher"));
+
+	Pitcher->SetEnableGravity(false);
+	Pitcher->SetConstraintMode(EDOFMode::XZPlane);
+	Pitcher->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	Pitcher->SetCollisionProfileName(TEXT("PhysicsActor"));
 	FloatingMovement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("Floating Pawn Movement"));
 
 	StatsComponent = CreateDefaultSubobject<UPaddleStats>(TEXT("Stats"));
 	InventoryComponent = CreateDefaultSubobject<UCollectableInventory>(TEXT("Inventory"));
-}
-
-// Called when the game starts or when spawned
-void AArkanoidPlayerPawn::BeginPlay()
-{
-	Super::BeginPlay();
-
-	TArray<UStaticMeshComponent*> comps;
-	this->GetComponents<UStaticMeshComponent>(comps);
-	if (comps.Num() > 0) {
-		for(UStaticMeshComponent* u : comps) {
-			if (u->GetFName().IsEqual("Paddle")) {
-				Pitcher = u;
-			}
-		}
-	}
 }
 
 // Called every frame

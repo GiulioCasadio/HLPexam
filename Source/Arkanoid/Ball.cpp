@@ -26,5 +26,6 @@ void ABall::Launch()
 		ballLaunched = true;
 		BallMesh->SetSimulatePhysics(true);
 		BallMesh->AddImpulse(FVector(0, 0, 70000));
+		BallMesh->SetRelativeScale3D(FVector(0.3f, 0.3f, 0.3f));
 	}
 }

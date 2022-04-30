@@ -24,9 +24,7 @@ public:
 	ABall* ballRef;
 
 protected:
-	virtual void BeginPlay() override;
-
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadonly)
 	UStaticMeshComponent* Pitcher;
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadonly)
