@@ -24,18 +24,3 @@ void AArkanoidGameState::DecreaseBalls()
 		Restart();
 	}
 }
-
-void AArkanoidGameState::SetBricks(int bricks)
-{
-	numberOfBricks = bricks;
-}
-
-void AArkanoidGameState::DecreaseBricks()
-{
-	numberOfBricks--;
-}
-
-int AArkanoidGameState::GetBricks()
-{
-	return numberOfBricks;
-}

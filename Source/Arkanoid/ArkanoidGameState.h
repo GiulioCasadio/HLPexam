@@ -28,15 +28,6 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "GameStats")
 	void DecreaseBalls();
 
-	UFUNCTION(BlueprintCallable, Category = "GameStats")
-	void SetBricks(int bricks);
-
-	UFUNCTION(BlueprintCallable, Category = "GameStats")
-	void DecreaseBricks();
-
-	UFUNCTION(BlueprintCallable, Category = "GameStats")
-	int GetBricks();
-
 	UFUNCTION(BlueprintImplementableEvent)
 	void Restart();
 };
