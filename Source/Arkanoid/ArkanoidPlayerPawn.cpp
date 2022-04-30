@@ -43,8 +43,10 @@ void AArkanoidPlayerPawn::Tick(float DeltaTime)
 
 void AArkanoidPlayerPawn::ArkanoidMovement(float AxisValue)
 {
-	AddMovementInput(FVector(AxisValue, 0.0f, 0.0f), 1.0f, false);
-	SetActorLocation(GetActorLocation());
+	if (StatsComponent!=nullptr) {
+		AddMovementInput(FVector(AxisValue, 0.0f, 0.0f), StatsComponent->GetSpeed());
+		SetActorLocation(GetActorLocation());
+	}
 }
 
 void AArkanoidPlayerPawn::Launch()

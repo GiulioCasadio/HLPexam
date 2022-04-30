@@ -37,3 +37,11 @@ void UPaddleStats::UpdateStats(const FString& StatName, float StatValue)
 		}
 	}
 }
+
+float UPaddleStats::GetSpeed() {
+	return Speed;
+}
+
+float UPaddleStats::GetSize() {
+	return Size;
+}

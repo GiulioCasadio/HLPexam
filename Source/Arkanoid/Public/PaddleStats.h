@@ -17,10 +17,14 @@ public:
 
 	void UpdateStats(const FString& StatName, float StatValue);
 
+	float GetSpeed();
+
+	float GetSize();
+
 protected:
 	
 	UPROPERTY(EditAnywhere, Category = "Stats", meta = (ClampMin = "0.0", ClampMax = "1.0", UIMin = "0.0", UIMAX = "1.0"))
-	float Speed = 0.5f;
+	float Speed = 0.6f;
 
 	UPROPERTY(EditAnywhere, Category = "Stats", meta = (ClampMin = "0.0", ClampMax = "1.0", UIMin = "0.0", UIMAX = "1.0"))
 	float Size = 0.5f;
